@@ -2,31 +2,31 @@ require "minitest/autorun"
 
 class TestBathroom < Minitest::Test
   def test_one_over
-    code = code_for(5, "L")
-    assert_equal 4, code
+    code = code_for("5", "R")
+    assert_equal "6", code
   end
 
   def test_one_down
-    code = code_for(5, "D")
-    assert_equal 8, code
+    code = code_for("1", "D")
+    assert_equal "3", code
   end
 
   def test_position_for
-    assert_equal [1, 1], position_for(5)
+    assert_equal [2, 0], position_for(5)
   end
 
   def test_pointless_movement
-    code = code_for(1, "LULULULULULU")
-    assert_equal 1, code
+    code = code_for("1", "LULULULULULU")
+    assert_equal "1", code
   end
 
   def test_multiple_codes
-    code = full_code(5, ["U", "L"])
-    assert_equal "21", code
+    code = full_code("5", ["R", "U"])
+    assert_equal "62", code
   end
 
   def test_full
-    assert_equal "99332", full_code(5, full_input)
+    assert_equal "DD483", full_code(5, full_input)
   end
 
   def full_code(starting_code, input)
@@ -41,48 +41,48 @@ class TestBathroom < Minitest::Test
   def code_for(starting_code, input)
     current_position = position_for(starting_code)
     input.chars.each do |move|
+      next_position = Array.new(current_position)
       case move
       when "U"
-        current_position[0] = current_position[0] - 1
+        next_position[0] = current_position[0] - 1
       when "D"
-        current_position[0] = current_position[0] + 1
+        next_position[0] = current_position[0] + 1
       when "L"
-        current_position[1] = current_position[1] - 1
+        next_position[1] = current_position[1] - 1
       when "R"
-        current_position[1] = current_position[1] + 1
+        next_position[1] = current_position[1] + 1
       end
-      current_position = bounds_check(current_position)
+      if valid?(next_position)
+        current_position = next_position
+      end
     end
     keypad[current_position[0]][current_position[1]]
   end
 
   def position_for(code)
     keypad.each_with_index do |row, row_idx|
-      row.each_with_index do |num, col_idx|
-        return [row_idx, col_idx] if num == code
+      row.each_with_index do |button, col_idx|
+        return [row_idx, col_idx] if button.to_s == code.to_s
       end
     end
   end
 
-  def bounds_check(position)
-    if(position[0] < 0)
-      position[0] = 0
-    elsif position[0] > keypad.length - 1
-      position[0] = keypad.length - 1
-    end
-    if(position[1] < 0)
-      position[1] = 0
-    elsif position[1] > keypad[0].length - 1
-      position[1] = keypad[0].length - 1
-    end
-    position
+  def valid?(position)
+    return false unless position[0] >= 0
+    return false unless position[1] >= 0
+    return false unless keypad[position[0]]
+    return false unless keypad[position[0]][position[1]]
+    return false if keypad[position[0]][position[1]] == '.'
+    true
   end
 
   def keypad
     [
-      [1, 2, 3],
-      [4, 5, 6],
-      [7, 8, 9]
+      %w(. . 1 . .),
+      %w(. 2 3 4 .),
+      %w(5 6 7 8 9),
+      %w(. A B C .),
+      %w(. . D . .),
     ]
   end
 
