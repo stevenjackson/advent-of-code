@@ -24,4 +24,12 @@ defmodule A1Test do
     assert List.first(masses) == 119031
     assert List.last(masses) == 121214
   end
+
+  test "total_fuel" do
+    assert A1.total_fuel([12, 14]) == 4
+  end
+
+  test "part 1 solution" do
+    assert A1.solve('input.txt') == 3249817
+  end
 end

@@ -23,4 +23,13 @@ defmodule A1 do
     contents |> String.split("\n", trim: true)
     |> Enum.map(&String.to_integer/1)
   end
+
+  def total_fuel(masses) do
+    Enum.map(masses, &fuel/1)
+    |> Enum.sum
+  end
+
+  def solve(filename) do
+    read_masses(filename) |> total_fuel
+  end
 end
