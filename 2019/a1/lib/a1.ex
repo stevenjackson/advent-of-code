@@ -15,6 +15,6 @@ defmodule A1 do
 
   """
   def fuel(mass) do
-    2
+    div(mass, 3) - 2
   end
 end
