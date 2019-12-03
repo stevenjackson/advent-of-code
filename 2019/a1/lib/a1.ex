@@ -17,4 +17,10 @@ defmodule A1 do
   def fuel(mass) do
     div(mass, 3) - 2
   end
+
+  def read_masses(filename) do
+    {:ok, contents} = File.read(filename)
+    contents |> String.split("\n", trim: true)
+    |> Enum.map(&String.to_integer/1)
+  end
 end

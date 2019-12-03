@@ -17,4 +17,11 @@ defmodule A1Test do
   test "100756" do
     assert A1.fuel(100756) == 33583
   end
+
+  test "read masses" do
+    masses = A1.read_masses('input.txt')
+    assert length(masses) == 100
+    assert List.first(masses) == 119031
+    assert List.last(masses) == 121214
+  end
 end
