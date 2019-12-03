@@ -1,0 +1,51 @@
+commit 69ce3495ecff715b7184e7006ca247e16f8b1bb6
+Author: Steve Jackson <steve@testdouble.com>
+Date:   Sat Jan 19 21:50:48 2019 -0500
+
+    Day 3 (whole thing, oops)
+
+commit aa6a9419ccc5c232a68006d2f52b95607f10c7c9
+Author: Steve Jackson <steve@testdouble.com>
+Date:   Sat Jan 19 21:50:20 2019 -0500
+
+    Finished Day 2
+
+commit 1966698bac08c8dc23dd8992eac040c80d59f27e
+Author: Steve Jackson <steve@testdouble.com>
+Date:   Wed Jan 9 08:18:46 2019 -0500
+
+    [Day2] - first part working
+
+commit 649c91f29e07b489749f0cb44e87c5598fa357e1
+Author: Steve Jackson <steve@testdouble.com>
+Date:   Tue Jan 8 15:00:20 2019 -0500
+
+    [Day1] Load file once up front
+    
+    I like how this really simplifies both Result and Repeat, it's hard for
+    me to see a way to make them simpler.
+    
+    Interstingly, I avoided this up front because of the ethos of
+    fast/compact - surely we don't want to pass full int slices around.
+    That calculation completely flipped when Repeat came in, now we would
+    load the same file multiple times?  What are we saving?  I'm going to
+    have to fight premature optimization pretty hard in an ecosystem that
+    encourages you to constantly structure code for perf wins.
+
+commit c2e1a80db1a5e7af8d1091127522e18d49769b0f
+Author: Steve Jackson <steve@testdouble.com>
+Date:   Tue Jan 8 14:55:00 2019 -0500
+
+    [Day1] Extract readFile, inline findRepeat
+
+commit fac85c780952693454720ceb262bac0b7197694c
+Author: Steve Jackson <steve@testdouble.com>
+Date:   Tue Jan 8 14:32:32 2019 -0500
+
+    Working Day1 part 2, but UGLY
+
+commit 2a5026c2cbaef2395cdb2e08bca21b4080e54866
+Author: Steve Jackson <steve@testdouble.com>
+Date:   Tue Jan 8 13:34:15 2019 -0500
+
+    First exercise
