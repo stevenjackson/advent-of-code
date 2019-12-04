@@ -15,7 +15,8 @@ defmodule A1 do
 
   """
   def fuel(mass) do
-    div(mass, 3) - 2
+    fuel = div(mass, 3) - 2
+    if fuel > 0 , do: fuel, else: 0
   end
 
   def read_masses(filename) do
@@ -29,7 +30,22 @@ defmodule A1 do
     |> Enum.sum
   end
 
-  def solve(filename) do
+  def solve_part_1(filename) do
     read_masses(filename) |> total_fuel
+  end
+
+  def fuel_fuel(mass) when mass > 0 do
+    remaining_mass = fuel(mass)
+    remaining_mass + fuel_fuel(remaining_mass)
+  end
+
+  def fuel_fuel(_mass) do
+    0
+  end
+
+  def solve_part_2(filename) do
+    read_masses(filename)
+    |> Enum.map(&fuel_fuel/1)
+    |> Enum.sum
   end
 end

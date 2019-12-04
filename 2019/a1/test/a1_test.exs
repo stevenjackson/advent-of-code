@@ -30,6 +30,16 @@ defmodule A1Test do
   end
 
   test "part 1 solution" do
-    assert A1.solve('input.txt') == 3249817
+    assert A1.solve_part_1('input.txt') == 3249817
+  end
+
+  test "fuel_fuel" do
+    assert A1.fuel_fuel(14) == 2
+    assert A1.fuel_fuel(1) == 0
+    assert A1.fuel_fuel(1969) == 966
+  end
+
+  test "part 2 solution" do
+    assert A1.solve_part_2('input.txt') == 4871866
   end
 end
