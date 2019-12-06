@@ -58,4 +58,11 @@ defmodule A2Test do
   test "solve_part_1" do
     assert A2.execute('input.txt', 12, 2) == {:done, 3716250}
   end
+
+  test "find_part2" do
+    target = 19690720
+    result = A2.find_part2('input.txt', target)
+    [{noun, verb, _target}] = result
+    IO.inspect("Answer #{noun * 100 + verb}")
+  end
 end

@@ -61,4 +61,9 @@ defmodule A2 do
     |> List.replace_at(1, noun)
     |> List.replace_at(2, verb)
   end
+
+  def find_part2(input, target) do
+    target? = fn(input, noun, verb) -> execute(input, noun, verb) == {:done, target} end
+    for noun <- 0..100, verb <- 0..100, target?.(input, noun, verb), do: { noun, verb, target }
+  end
 end
