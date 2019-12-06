@@ -48,15 +48,17 @@ defmodule A2 do
     |> Enum.map(&String.to_integer/1)
   end
 
-  def solve_part_1(filename) do
-    read_program(filename)
-    |> modify_program
+  def execute(program_file, noun, verb) do
+    {code, program}  = read_program(program_file)
+    |> set_input(noun, verb)
     |> run_program
+
+    {code, Enum.at(program, 0)}
   end
 
-  def modify_program(program) do
+  def set_input(program, noun, verb) do
     program
-    |> List.replace_at(1, 12)
-    |> List.replace_at(2, 2)
+    |> List.replace_at(1, noun)
+    |> List.replace_at(2, verb)
   end
 end

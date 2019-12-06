@@ -56,8 +56,6 @@ defmodule A2Test do
   end
 
   test "solve_part_1" do
-    result =
-    {:done, [head | tail]} = A2.solve_part_1('input.txt')
-    assert head == 3716250
+    assert A2.execute('input.txt', 12, 2) == {:done, 3716250}
   end
 end
