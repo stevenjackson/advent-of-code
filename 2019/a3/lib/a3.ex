@@ -44,9 +44,19 @@ defmodule A3 do
    |> distance({0, 0})
   end
 
-
   def read_schematics(filename) do
     {:ok, contents} = File.read(filename)
     contents |> String.split("\n", trim: true)
+  end
+
+  def find_steps_to_soonest_intersection(schematic1, schematic2) do
+    intersections(schematic1, schematic2) -- [{0, 0}]
+    |> Enum.map(fn p -> steps(schematic1, p) + steps(schematic2, p) end)
+    |> Enum.min
+  end
+
+  def steps(schematic, point) do
+    points(schematic)
+    |> Enum.find_index(fn p -> point == p end)
   end
 end

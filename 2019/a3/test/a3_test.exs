@@ -49,4 +49,10 @@ defmodule A3Test do
     distance = A3.find_distance_to_closest_intersection(wire1, wire2)
     IO.puts "problem 1: #{distance}"
   end
+
+  test "solve2" do
+    [wire1, wire2] = A3.read_schematics('input.txt')
+    steps = A3.find_steps_to_soonest_intersection(wire1, wire2)
+    IO.puts "problem 2: #{steps}"
+  end
 end
