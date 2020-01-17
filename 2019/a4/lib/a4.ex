@@ -8,14 +8,12 @@ defmodule A4 do
     double_digits == true
   end
 
-  def digits_increasing?(value) do
-    decreasing = Integer.digits(value)
-     |> Enum.reduce_while(-1, fn digit, prev_digit ->
-       if digit < prev_digit, do: {:halt, false}, else: {:cont, digit}
-     end)
+  def digits_increasing?(<<first>> <> <<second>> <> _rest)
+    when first > second, do: false
 
-    decreasing != false
-  end
+  def digits_increasing?(<<_first>> <> rest), do: digits_increasing?(rest)
+
+  def digits_increasing?(""), do: true
 
   def has_double?(value) do
     find_matches(value)
