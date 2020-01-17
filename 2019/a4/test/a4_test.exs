@@ -8,13 +8,13 @@ defmodule A4Test do
   end
 
   test "increasing digits" do
-    assert A4.digits_increasing?("12")
-    assert A4.digits_increasing?("123")
-    refute A4.digits_increasing?("321")
-    refute A4.digits_increasing?("198")
-    assert A4.digits_increasing?("379")
-    assert A4.digits_increasing?("12223")
-    refute A4.digits_increasing?("12323")
+    assert A4.digits_increasing?(12)
+    assert A4.digits_increasing?(123)
+    refute A4.digits_increasing?(321)
+    refute A4.digits_increasing?(198)
+    assert A4.digits_increasing?(379)
+    assert A4.digits_increasing?(12223)
+    refute A4.digits_increasing?(12323)
   end
 
   test "finding matches" do

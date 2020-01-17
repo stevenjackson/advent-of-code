@@ -8,12 +8,10 @@ defmodule A4 do
     double_digits == true
   end
 
-  def digits_increasing?(<<first>> <> <<second>> <> _rest)
-    when first > second, do: false
-
-  def digits_increasing?(<<_first>> <> rest), do: digits_increasing?(rest)
-
-  def digits_increasing?(""), do: true
+  def digits_increasing?([first, second | _rest]) when first > second, do: false
+  def digits_increasing?([_first | rest]), do: digits_increasing?(rest)
+  def digits_increasing?([]), do: true
+  def digits_increasing?(value), do: digits_increasing?(Integer.digits(value))
 
   def has_double?(value) do
     find_matches(value)
